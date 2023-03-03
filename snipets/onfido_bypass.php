@@ -103,7 +103,7 @@
         const email = document.querySelector('input[name="email"]').value.trim();
 
         if (!email) {
-            pushMessage('Email is rquired!', true);
+            pushMessage('Email is required!', true);
             return;
         }
 
@@ -125,7 +125,7 @@
         const dbPrefix = document.querySelector('input[name="db_prefix"]').value;
 
         if (!customerId) {
-            pushMessage('CustomerID is rquired!', true);
+            pushMessage('CustomerID is required!', true);
             return;
         }
 
