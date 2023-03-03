@@ -152,10 +152,15 @@
 
     buttonCopyQueriesButton.addEventListener('click', function () {
         let content = document.querySelector('#place_for_queries > div').innerHTML;
-        console.log(content);
+
+        if(!content){
+            pushMessage('Nothing to copy', true);
+            return;
+        }
+
         content = content.replaceAll('<br>', '');
         content = content.replaceAll('&gt;', '>');
-        console.log(content);
+
         navigator.clipboard.writeText(content);
 
         pushMessage('insert SQLs are coppied!');
