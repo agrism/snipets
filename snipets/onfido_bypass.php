@@ -163,7 +163,7 @@
 
         navigator.clipboard.writeText(content);
 
-        pushMessage('insert SQLs are coppied!');
+        pushMessage('SQL(s) are added to clipboard!');
     })
 
 
