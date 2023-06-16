@@ -10,11 +10,7 @@ pipeline {
             sh 'ssh root@${staging_server} "mkdir -p /var/www/snipets.kilograms.lv1/${BUILDVERSION}"'
             sh 'scp -r ${WORKSPACE}/* root@${staging_server}:/var/www/snipets.kilograms.lv1/${BUILDVERSION}'
             sh '''
-                ssh root@${staging_server} "
-                FILE=/var/www/snipets.kilograms.lv1/prod
-                if test -d "$FILE"; then
-                    rm -R $FILE
-                fi"
+                ssh root@${staging_server} "rm -rf /var/www/snipets.kilograms.lv1/prod"
             '''
             sh 'ssh root@${staging_server} "ln -s /var/www/snipets.kilograms.lv1/${BUILDVERSION} /var/www/snipets.kilograms.lv1/prod"'
             echo "Current build version :: $BUILDVERSION"
