@@ -15,8 +15,8 @@ pipeline {
                 if test -f "$FILE"; then
                     rm -R $FILE
                 fi
-                ln -s /var/www/snipets.kilograms.lv1/${BUILDVERSION} /var/www/snipets.kilograms.lv/prod
             '''
+            sh 'ln -s /var/www/snipets.kilograms.lv1/${BUILDVERSION} /var/www/snipets.kilograms.lv/prod'
             echo "Current build version :: $BUILDVERSION"
         }
     }
