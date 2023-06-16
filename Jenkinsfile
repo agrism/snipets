@@ -1,11 +1,13 @@
 pipeline {
   agent any
+  environment{
+    staging_server="65.21.182.7"
+  }
   stages {
-    stage('dummy stage') {
-      steps {
-        sh 'echo 11;'
-      }
+    stage("Deploy to remote"){
+        steps {
+            sh 'scp ${WORKSPACE}/* root@${staging_server}:/var/www/snipets.kilograms.lv1'
+        }
     }
-
   }
 }
