@@ -16,7 +16,7 @@ pipeline {
                     rm -R $FILE
                 fi
             '''
-            sh 'ln -s /var/www/snipets.kilograms.lv1/${BUILDVERSION} /var/www/snipets.kilograms.lv/prod'
+            sh 'ssh root@${staging_server} "ln -s /var/www/snipets.kilograms.lv1/${BUILDVERSION} /var/www/snipets.kilograms.lv1/prod"'
             echo "Current build version :: $BUILDVERSION"
         }
     }
