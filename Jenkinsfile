@@ -7,12 +7,12 @@ pipeline {
   stages {
     stage("Deploy to remote"){
         steps {
-            sh 'ssh root@${staging_server} "mkdir -p /var/www/snipets.kilograms.lv1/${BUILDVERSION}"'
-            sh 'scp -r ${WORKSPACE}/* root@${staging_server}:/var/www/snipets.kilograms.lv1/${BUILDVERSION}'
+            sh 'ssh root@${staging_server} "mkdir -p /var/www/snipets.kilograms.lv/${BUILDVERSION}"'
+            sh 'scp -r ${WORKSPACE}/* root@${staging_server}:/var/www/snipets.kilograms.lv/${BUILDVERSION}'
             sh '''
-                ssh root@${staging_server} "rm -rf /var/www/snipets.kilograms.lv1/prod"
+                ssh root@${staging_server} "rm -rf /var/www/snipets.kilograms.lv/prod"
             '''
-            sh 'ssh root@${staging_server} "ln -s /var/www/snipets.kilograms.lv1/${BUILDVERSION} /var/www/snipets.kilograms.lv1/prod"'
+            sh 'ssh root@${staging_server} "ln -s /var/www/snipets.kilograms.lv/${BUILDVERSION} /var/www/snipets.kilograms.lv/prod"'
             echo "Current build version :: $BUILDVERSION"
         }
     }
